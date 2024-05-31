@@ -1,0 +1,7 @@
+{:logseq-catppuccin {:version "v0.2.3", :repo "catppuccin/logseq", :effect false, :theme true}
+ :harmony-theme {:version "v.1.3.0", :repo "dmytrodubinin/Harmony-theme-for-Logseq", :effect false, :theme true}
+ :logseq-mia-theme {:version "v1.6.0", :repo "playerofgames/logseq-mia-theme", :effect false, :theme true}
+ :logseq-oxford-blue-theme {:version "v0.2.0", :repo "blueteafrog/logseq-oxfordblue-theme", :effect false, :theme true}
+ :logseq-awesome-styler {:version "v3.7.1", :repo "yoyurec/logseq-awesome-styler", :effect true, :theme false}
+ :logseq-banners-plugin {:version "v3.4.11", :repo "yoyurec/logseq-banners-plugin", :effect true, :theme false}
+ :logseq-git {:version "v1.5.5", :repo "haydenull/logseq-plugin-git", :effect true, :theme false}}

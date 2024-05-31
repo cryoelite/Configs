@@ -1,0 +1,55 @@
+{
+  "generalHeading": null,
+  "hidePluginProps": true,
+  "widgetsCalendarHeading": null,
+  "widgetsCalendarEnabled": "off",
+  "widgetsCalendarWidth": "380px",
+  "widgetsWeatherHeading": null,
+  "widgetsWeatherEnabled": "off",
+  "widgetsWeatherID": "E1VlkgzhdS6fQ0u8pp9n",
+  "widgetsQuoteHeading": null,
+  "widgetsQuoteEnabled": "journals",
+  "widgetsQuoteTag": "#quote",
+  "widgetsQuoteMaxWidth": "48ch",
+  "widgetsQuoteSize": "100%",
+  "widgetsCustomHeading": null,
+  "widgetsCustomEnabled": "everywhere",
+  "widgetsCustomCode": "<iframe id=\"banner-widgets-pomo\" src=\"https://pomofocus.io/app\"></iframe>",
+  "journalHeading": null,
+  "defaultJournalBanner": "https://cdna.artstation.com/p/assets/images/images/075/170/028/4k/pengzhen-zhang-2024-4-15.jpg?1713910831",
+  "journalBannerHeight": "280px",
+  "journalBannerAlign": "50%",
+  "defaultJournalIcon": "📅",
+  "journalIconWidth": "50px",
+  "pageHeading": null,
+  "defaultPageBanner": "https://cdna.artstation.com/p/assets/images/images/075/170/028/4k/pengzhen-zhang-2024-4-15.jpg?1713910831",
+  "pageBannerHeight": "280px",
+  "pageBannerAlign": "50%",
+  "defaultPageIcon": "📄",
+  "pageIconWidth": "40px",
+  "advancedHeading": null,
+  "customPropsConfig": {
+    "pageType": {
+      "evrgrn": {
+        "pageIcon": "🌳",
+        "banner": "https://images.unsplash.com/photo-1502082553048-f009c37129b9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+        "bannerHeight": "200px",
+        "bannerAlign": "50%"
+      },
+      "seed": {
+        "pageIcon": "🌱",
+        "banner": "https://images.unsplash.com/photo-1631949454967-6c6d07fb59cd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+        "bannerHeight": "200px",
+        "bannerAlign": "50%"
+      }
+    },
+    "anotherCamalCasedPropName": {}
+  },
+  "additional": {
+    "quoteWidget": {
+      "cleanupRegExps_before": [],
+      "cleanupRegExps_after": []
+    }
+  },
+  "disabled": false
+}

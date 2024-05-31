@@ -1,0 +1,12 @@
+{
+  "buttons": [
+    "Check Status",
+    "Show Log",
+    "Pull Rebase",
+    "Commit & Push"
+  ],
+  "checkWhenDBChanged": true,
+  "autoCheckSynced": true,
+  "autoPush": true,
+  "disabled": true
+}
