@@ -1,4 +1,4 @@
 #Gitignore
 
 #Logseq 
-.logseq/config/*
+.logseq/graphs/*
