@@ -1,0 +1,4 @@
+#Gitignore
+
+#Logseq 
+.logseq/config/*
