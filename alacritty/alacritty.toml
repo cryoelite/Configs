@@ -1,0 +1,14 @@
+# Alacritty Config
+[shell]
+program = "C:\\Program Files\\PowerShell\\7\\pwsh.exe"
+
+[window]
+title = "Cryo's Alacrittew"
+dynamic_title = false
+
+[font]
+normal.family = "Cascadia Code"
+normal.style = "Regular"
+
+[selection]
+save_to_clipboard = true
