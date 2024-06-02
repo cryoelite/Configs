@@ -7,8 +7,7 @@ title = "Cryo's Alacrittew"
 dynamic_title = false
 
 [font]
-normal.family = "Cascadia Code"
-normal.style = "Regular"
+normal.family = "Cousine Nerd Font"
 
 [selection]
 save_to_clipboard = true
