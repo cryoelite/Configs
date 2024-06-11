@@ -1,13 +1,21 @@
 # Alacritty Config
-[shell]
-program = "C:\\Program Files\\PowerShell\\7\\pwsh.exe"
+#[shell]
+#program = "C:\\Program Files\\PowerShell\\7\\pwsh.exe"
+
+import = [
+    "~/.config/alacritty/catppuccin-frappe.toml"
+]
+
+[env]
+TERM = "xterm-256color"
 
 [window]
 title = "Cryo's Alacrittew"
 dynamic_title = false
 
 [font]
-normal.family = "Cousine Nerd Font"
+normal.family = "CodeNewRoman Nerd font"
+size = 15
 
 [selection]
 save_to_clipboard = true
