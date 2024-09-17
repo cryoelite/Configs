@@ -5,7 +5,6 @@ echo "Installing Tools"
 
 
 
-
 echo "LazyVim Installation Started"
 
 echo "Install LazyVim ?"
@@ -27,9 +26,10 @@ winget install sharkdp.fd
 
 echo "Setting up configs"
 winget install Microsoft.PowerShell --accept-package-agreements
-cmd /c mklink /J C:\\Users\\$env:UserName\\.logseq .\\.logseq
-cmd /c mklink /J C:\\Users\\$env:UserName\\AppData\\alacritty\alacritty.toml .\\alacritty
-cmd /c mklink /J C:\\Users\\$env:LOCALAPPDATA\\nvim .\\nvim
+cmd /c mklink /J $env:UserName\\.logseq .\\.logseq
+cmd /c mklink /J $env:APPDATA\\alacritty\alacritty.toml .\\alacritty
+cmd /c mklink /J $env:LOCALAPPDATA\\nvim .\\nvim
+cmd /c mklink /J $env:APPDATA\\Zed .\\Zed
 
 #Install fonts from nerdfonts (https://www.nerdfonts.com/)
 curl -o cousine.zip "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Cousine.zip"
