@@ -7,8 +7,16 @@
 // custom settings, run `zed: open default settings` from the
 // command palette
 {
+  "features": {
+    "inline_completion_provider": "supermaven"
+  },
   "telemetry": {
     "metrics": true
+  },
+  "autosave": {
+    "after_delay": {
+      "milliseconds": 1000
+    }
   },
   "vim_mode": false,
   "ui_font_size": 15,

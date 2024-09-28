@@ -39,6 +39,8 @@ unzip cousine.zip -d "./TempFiles/Fonts/cousine/"
 unzip CCM.zip -d "./TempFiles/Fonts/CCM/"
 rm -f cousine.zip
 rm -f CCM.zip
+
+#TODO Also more fonts https://github.com/zed-industries/zed-fonts/releases/tag/1.2.0
 #TODO Install the fonts
 
 echo "LazyVim Installation Finished"

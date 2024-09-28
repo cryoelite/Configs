@@ -1,0 +1,10 @@
+services:
+  cryo_linux:
+    build:
+      context: .
+      dockerfile: ./cryo_linux.dockerfile
+      platforms:
+        - "linux/amd64"
+        - "linux/arm64"
+
+
