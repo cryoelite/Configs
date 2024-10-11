@@ -6,5 +6,8 @@ services:
       platforms:
         - "linux/amd64"
         - "linux/arm64"
-
-
+    ports:
+      - "3005:3005"
+    tty: true
+    stdin_open: true
+    command: /bin/bash

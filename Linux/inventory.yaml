@@ -1,4 +1,0 @@
-myhosts:
-  default:
-    host_01:
-      ansible_connection: docker
