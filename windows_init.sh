@@ -30,6 +30,7 @@ cmd /c mklink /J $env:UserName\\.logseq .\\.logseq
 cmd /c mklink /J $env:APPDATA\\alacritty\alacritty.toml .\\alacritty
 cmd /c mklink /J $env:LOCALAPPDATA\\nvim .\\nvim
 cmd /c mklink /J $env:APPDATA\\Zed .\\Zed
+cmd /c mklink /J $env:APPDATA\\mpv\ .\\mpv\
 
 #Install fonts from nerdfonts (https://www.nerdfonts.com/)
 curl -o cousine.zip "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Cousine.zip"
