@@ -6,60 +6,67 @@
 #Base Image
 FROM debian:trixie-20240904
 
-ARG username=millify
-ARG usergroup=milly_group
+#ARG username=millify
+ARG username=root
+#ARG usergroup=milly_group
+#ARG usergroup=root 
+##Security flaw but f that, theres no sudo, apt-get doesn't work with non-root users (Permission denied) and more issues. Root for now. TODO: Investigate, improve understanding or fix.
+#ARG userpass=toor
+#ARG userfolder=/home/${username}
+ARG userfolder=/root/
 
-ARG userfolder=/usr/${username}
-
-# Create usr folder
-RUN mkdir -p ${userfolder}
-
-WORKDIR ${userfolder}
-
-#Create group
-RUN groupadd -r ${usergroup}
-
-#Create user with its group
-RUN useradd -r -d ${userfolder} -g ${usergroup} ${username}
-
-
-# Chown all the files to the user.
-RUN chown -R ${username}:${usergroup} ${userfolder}
-
-#Change Root password
-RUN echo 'toor' | passwd --stdin root 
-
-#Switch to user
-USER ${username}
-
+##Update and Upgrade
+#RUN <<EOF
+#apt-get update -y
+#apt-get upgrade -y
+#apt-get clean
+#EOF
+#
+#
+#
+###Create group, system group, -f means force, if group exists, does nothing, else creates it.
+#RUN groupadd -r -f ${usergroup}  
+#
+#RUN useradd -r -m -d ${userfolder} -g ${usergroup} -s /bin/bash ${username}
+#
+##Add user to root
+#RUN <<EOF
+#apt-get update -y
+#apt-get install -y sudo && echo "${username} ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+#EOF
+#
+## Chown all the files to the user.
+#RUN chown -R ${username}:${usergroup} ${userfolder}
+#
+###Change Root password
+RUN echo 'toor' | passwd --stdin root
+#RUN echo ${userpass} | passwd --stdin ${username} 
+#
+#WORKDIR ${userfolder}
+#USER ${username}
+## Doesn't work, still permission denied with apt-get
 
 #Update and Upgrade
-USER root
 RUN <<EOF
 apt-get update -y
 apt-get upgrade -y
+apt-get clean
 EOF
-USER ${username}
+
 
 ## Common Packages
-USER root
-RUN apt-get install -y dirmngr gnupg software-properties-common curl gcc build-essential &&` 
+RUN apt-get install -y dirmngr gnupg software-properties-common curl gcc build-essential p7zip-full nano vi&&` 
     apt-get clean
-USER ${username}
 
-USER root
 ## Python, 3.12
 RUN apt-get install -y python3.12 &&` 
     apt-get clean
 ##
-USER ${username}
-
-
 
 
 ## Node 
 ENV NODE_VERSION=22.9.0 
-ENV NVM_DIR=/usr/${username}/local/nvm
+ENV NVM_DIR=${userfolder}/local/nvm
 RUN mkdir -p ${NVM_DIR}
 
 RUN curl https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash &&`
@@ -82,27 +89,24 @@ ENV PATH="$CARGO_HOME/bin:$PATH"
 ##
 
 ##C++
-USER root
 RUN apt-get install -y clang gdb llvm &&`
     apt-get clean
-USER ${username}
 ##
 
 
 #Update and Upgrade
-USER root
 RUN <<EOF
 apt-get update -y
 apt-get upgrade -y
 apt-get clean
 EOF
-USER ${username}
 
 
 # Chown all the files to the user again
-RUN chown -R ${username}:${usergroup} ${userfolder}
+##RUN chown -R ${username}:${usergroup} ${userfolder}
 
 EXPOSE 3005
+USER ${username}
 
 CMD [ "bash" ]
 
