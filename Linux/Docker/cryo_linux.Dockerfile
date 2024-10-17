@@ -55,7 +55,7 @@ EOF
 
 
 ## Common Packages
-RUN apt-get install -y dirmngr gnupg software-properties-common curl gcc build-essential p7zip-full nano vi&&` 
+RUN apt-get install -y dirmngr gnupg software-properties-common curl gcc build-essential p7zip-full nano vim &&` 
     apt-get clean
 
 ## Python, 3.12
