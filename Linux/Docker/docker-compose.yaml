@@ -5,7 +5,7 @@ services:
       - .env
     build:
       context: .
-      dockerfile: ./cryo_linux.dockerfile
+      dockerfile: ./cryo_linux.Dockerfile
       platforms:
         - "linux/amd64"
         - "linux/arm64"
