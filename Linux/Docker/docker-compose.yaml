@@ -1,0 +1,21 @@
+#Needed .env file, it has HOST_PATH variable, which defines the default folder to be mounted. Since win and mac have different directory structures, this is handy.
+services:
+  cryo_linux:
+    env_file:
+      - .env
+    build:
+      context: .
+      dockerfile: ./cryo_linux.Dockerfile
+      platforms:
+        - "linux/amd64"
+        - "linux/arm64"
+    volumes:
+      - "${HOST_PATH}:/mnt/${HOST_PATH}"
+    ports:
+      - "3005:3005"
+    tty: true
+    stdin_open: true
+    command: /bin/bash
+    container_name: colx
+    privileged: true
+
