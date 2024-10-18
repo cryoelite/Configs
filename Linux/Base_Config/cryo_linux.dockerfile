@@ -46,12 +46,14 @@ RUN echo 'toor' | passwd --stdin root
 #USER ${username}
 ## Doesn't work, still permission denied with apt-get
 
-#Update and Upgrade
+#Update and upgrade
 RUN <<EOF
-apt-get update -y
-apt-get upgrade -y
-apt-get clean
+apt-get update -y &&
+apt-get upgrade -y &&
+apt-get clean 
 EOF
+
+
 
 
 ## Common Packages
@@ -96,8 +98,8 @@ RUN apt-get install -y clang gdb llvm &&`
 
 #Update and Upgrade
 RUN <<EOF
-apt-get update -y
-apt-get upgrade -y
+apt-get update -y &&
+apt-get upgrade -y &&
 apt-get clean
 EOF
 
