@@ -29,9 +29,9 @@ RUN apt-get install -y dirmngr gnupg software-properties-common curl gcc build-e
 
 ##Setup git
 RUN curl --request GET `
---url "https://api.github.com/${GIT_USERNAME}" `
---header "Authorization: Bearer ${GIT_TOKEN}" `
---header "X-GitHub-Api-Version: 2022-11-28"
+    --url "https://api.github.com/${GIT_USERNAME}" `
+    --header "Authorization: Bearer ${GIT_TOKEN}" `
+    --header "X-GitHub-Api-Version: 2022-11-28"
 ##
 
 

@@ -1,52 +1,16 @@
 # escape=`
-#Escape character directive
 
 #Purpose: To help develop stuff in a containerized environment, with all the necessary tools and packages pre-installed. Make it portable, and run anywhere, amd64 or arm64.
 
-#Base Image
 FROM debian:trixie-20240904
 
-#ARG username=millify
 ARG username=root
 ARG GIT_TOKEN
 ARG GIT_USERNAME
-#ARG usergroup=milly_group
-#ARG usergroup=root 
-##Security flaw but f that, theres no sudo, apt-get doesn't work with non-root users (Permission denied) and more issues. Root for now. TODO: Investigate, improve understanding or fix.
-#ARG userpass=toor
-#ARG userfolder=/home/${username}
+ARG C_PORT
 ARG userfolder=/root/
 
-##Update and Upgrade
-#RUN <<EOF
-#apt-get update -y
-#apt-get upgrade -y
-#apt-get clean
-#EOF
-#
-#
-#
-###Create group, system group, -f means force, if group exists, does nothing, else creates it.
-#RUN groupadd -r -f ${usergroup}  
-#
-#RUN useradd -r -m -d ${userfolder} -g ${usergroup} -s /bin/bash ${username}
-#
-##Add user to root
-#RUN <<EOF
-#apt-get update -y
-#apt-get install -y sudo && echo "${username} ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
-#EOF
-#
-## Chown all the files to the user.
-#RUN chown -R ${username}:${usergroup} ${userfolder}
-#
-###Change Root password
 RUN echo 'toor' | passwd --stdin root
-#RUN echo ${userpass} | passwd --stdin ${username} 
-#
-#WORKDIR ${userfolder}
-#USER ${username}
-## Doesn't work, still permission denied with apt-get
 
 #Update and upgrade
 RUN <<EOF
@@ -65,9 +29,9 @@ RUN apt-get install -y dirmngr gnupg software-properties-common curl gcc build-e
 
 ##Setup git
 RUN curl --request GET `
---url "https://api.github.com/${GIT_USERNAME}" `
---header "Authorization: Bearer ${GIT_TOKEN}" `
---header "X-GitHub-Api-Version: 2022-11-28"
+    --url "https://api.github.com/${GIT_USERNAME}" `
+    --header "Authorization: Bearer ${GIT_TOKEN}" `
+    --header "X-GitHub-Api-Version: 2022-11-28"
 ##
 
 
@@ -114,11 +78,7 @@ apt-get upgrade -y &&
 apt-get clean
 EOF
 
-
-# Chown all the files to the user again
-##RUN chown -R ${username}:${usergroup} ${userfolder}
-
-EXPOSE 3005
+EXPOSE ${C_PORT}
 USER ${username}
 
 CMD [ "bash" ]

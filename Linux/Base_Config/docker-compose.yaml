@@ -18,13 +18,9 @@ services:
 #https://stackoverflow.com/questions/24225647/docker-a-way-to-give-access-to-a-host-usb-or-serial-device. Gives access to all devices on windows, dynamically too. Security flaw but, for a dev container thats alright.
     ports:
       - "${HOST_PORT}:${C_PORT}"
-    tty: true
+    tty: false
+#tty causing issue on mac, docker engine is unreliable, it worked, now it doesn't.
     stdin_open: true
     command: /bin/bash
     container_name: ${C_NAME}
     privileged: true
-
-#env: HOST_PATH="C:/"
-#IN_PORT=3005
-#OUT_PORT=3005
-#C_NAME=colx

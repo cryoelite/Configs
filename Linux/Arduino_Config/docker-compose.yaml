@@ -12,21 +12,14 @@ services:
       platforms:
         - "linux/amd64"
         - "linux/arm64"
-#    devices:
-#      - "${ARDUINO_DEVICE_FILE}:/dev/ttyS4" 
     volumes:
       - "${HOST_PATH}:/mnt/${HOST_PATH}"
       - "/dev:/dev"
     ports:
       - "${HOST_PORT}:${C_PORT}"
-    tty: true
+    tty: false
     stdin_open: true
     command: /bin/bash
     container_name: ${C_NAME}
     privileged: true
 
-#HOST_PATH="C:/"
-#ARDUINO_DEVICE_FILE="/dev/ttyS4"
-#IN_PORT=3006
-#OUT_PORT=3006
-#C_NAME=ardx
