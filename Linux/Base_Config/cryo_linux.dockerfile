@@ -72,7 +72,7 @@ RUN curl --request GET `
 
 
 ## Python
-RUN apt-get install -y python3 &&` 
+RUN apt-get install -y python3 python3-venv &&` 
     apt-get clean
 ##
 
