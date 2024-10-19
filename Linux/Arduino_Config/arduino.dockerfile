@@ -36,7 +36,7 @@ RUN curl --request GET `
 
 
 ## Python, 3.12
-RUN apt-get install -y python3.12 &&` 
+RUN apt-get install -y python &&` 
     apt-get clean
 ##
 
