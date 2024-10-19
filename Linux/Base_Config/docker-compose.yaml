@@ -5,6 +5,8 @@ services:
     build:
       args:
         - C_PORT=${C_PORT}
+        - GIT_TOKEN=${GIT_TOKEN}
+        - GIT_USERNAME=${GIT_USERNAME}
       context: .
       dockerfile: ./cryo_linux.dockerfile
       platforms:

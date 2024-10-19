@@ -6,6 +6,8 @@ FROM debian:trixie-20240904
 
 ARG username=root
 ARG C_PORT
+ARG GIT_TOKEN
+ARG GIT_USERNAME
 ARG userfolder=/root/
 
 
@@ -21,8 +23,17 @@ apt-get clean
 EOF
 
 ## Common Packages
-RUN apt-get install -y dirmngr gnupg software-properties-common curl gcc build-essential p7zip-full nano vim usbutils &&` 
+RUN apt-get install -y dirmngr gnupg software-properties-common curl gcc build-essential p7zip-full nano vim usbutils git &&` 
     apt-get clean
+##
+
+##Setup git
+RUN curl --request GET `
+--url "https://api.github.com/${GIT_USERNAME}" `
+--header "Authorization: Bearer ${GIT_TOKEN}" `
+--header "X-GitHub-Api-Version: 2022-11-28"
+##
+
 
 ## Python, 3.12
 RUN apt-get install -y python3.12 &&` 
