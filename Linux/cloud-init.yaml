@@ -1,0 +1,9 @@
+#cloud-config
+users:
+  - name: millify
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    groups: sudo
+    ssh-authorized-keys:
+      - ssh-rsa YOUR_PUBLIC_SSH_KEY_HERE
+    lock_passwd: false
+    passwd: $6$rounds=4096$randomsaltstring$JOMbAWEdf9eKxkfUS1UnkzsKo0k...
