@@ -250,8 +250,7 @@ function main {
 
                 start_qemu -should_cloud_init $true -vm_name $vm_name -memory_size $memory_size -cpu_cores $cpu_cores -disk_path $disk_path -seed_img $seed_img -qemu_path $qemu_path -state_sav_path $disk_save_file
             }
-            # ssh -p 2222 localhost
-            # ssh ubuntu@localhost -p 2222
+            Write-Host "Finished setting up VM $vm_name, for ssh follow https://askubuntu.com/a/497898/1701747 and then ssh with ssh root@localhost -p 2222"
             exit 0
         }
     }
