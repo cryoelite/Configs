@@ -1,4 +1,7 @@
 #cloud-config
-password: Root2121
-chpasswd: { expire: False }
+chpasswd:
+  list: |
+    root:Root2121
+  expire: False
 ssh_pwauth: True
+#Generate passwd with mkpasswd  --method=SHA-512 --rounds=500000 and given the password
