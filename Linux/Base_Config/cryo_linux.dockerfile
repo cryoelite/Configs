@@ -67,7 +67,7 @@ ENV PATH="$CARGO_HOME/bin:$PATH"
 ##
 
 ##C++
-RUN apt-get install -y clang gdb llvm &&`
+RUN apt-get install -y clang clangd gdb llvm &&`
     apt-get clean
 ##
 

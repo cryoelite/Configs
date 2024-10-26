@@ -8,7 +8,7 @@ apt-get clean
 
 apt-get install -y docker.io nano dirmngr gnupg software-properties-common curl gcc build-essential p7zip-full nano vim usbutils git \
     python3 python3-venv \
-    clang gdb llvm
+    clang clangd gdb llvm
 
 curl --proto '=https' --tlsv1.3 https://sh.rustup.rs -sSf | sh -s -- -y                         #Rust
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" #Brew
