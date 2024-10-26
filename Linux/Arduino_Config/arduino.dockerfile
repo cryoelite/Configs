@@ -23,7 +23,7 @@ apt-get clean
 EOF
 
 ## Common Packages
-RUN apt-get install -y dirmngr gnupg software-properties-common curl gcc build-essential p7zip-full nano vim usbutils git &&` 
+RUN apt-get install -y dirmngr gnupg software-properties-common curl gcc build-essential p7zip-full nano vim usbutils git libreoffice &&` 
     apt-get clean
 ##
 
