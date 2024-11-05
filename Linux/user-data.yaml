@@ -1,7 +1,9 @@
 #cloud-config
 chpasswd:
+  expire: false
   list: |
-    root:Root2121
-  expire: False
-ssh_pwauth: True
-#Generate passwd with mkpasswd  --method=SHA-512 --rounds=500000 and given the password
+    ubuntu:Root2121
+ssh_pwauth: true
+package_update: true
+package_upgrade: true
+#Generate passwd with mkpasswd --method=SHA-512 --rounds=4096 https://cloudinit.readthedocs.io/en/latest/reference/examples.html Not tryna be secure, just trying to avoid normal string representation. This is insecure anyway, even with 5 million rounds.
