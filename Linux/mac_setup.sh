@@ -12,9 +12,10 @@ echo "Deletion successful"
 
 echo "Launching VM"
 multipass launch -n $vm_name --cloud-init ./user-data.yaml
-multipass stop $vm_name 
+multipass stop $vm_name --force
+multipass set local.privileged-mounts=Yes
 multipass mount --type=native ../ $vm_name:/mnt/
-multipass set local.$vm_name.disk=$vm_size 
+multipass set local.$vm_name.disk=$vm_size
 multipass start $vm_name
 echo "Launched VM"
 
