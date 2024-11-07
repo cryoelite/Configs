@@ -1,8 +1,7 @@
 #cloud-config
-chpasswd:
-  expire: false
-  list: |
-    ubuntu:Root2121
+user:
+  name: ubuntu
+  hashed_passwd: $6$rounds=4096$xw39jhl/TKe7Bevk$FkABLzD9gvq57.gcMaZLpUJBrzBK1XuwI.ghBm4.vURn6X8EIIsnTNFzZODWRUbEIBFIzAVfkcP7kdzI8uz93/
 ssh_pwauth: true
 package_update: true
 package_upgrade: true
