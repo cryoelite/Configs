@@ -16,6 +16,8 @@ function main {
 
     $vm_name="auhydromy"
     $vm_size="64G"
+    $cpus="4"
+    $memory="8G"
 
     Write-Host "Deleting existing vm with name $vm_name"
     multipass delete $vm_name --purge
@@ -27,6 +29,8 @@ function main {
     multipass set local.privileged-mounts=Yes
     multipass mount --type=classic ../ ${vm_name}:/mnt/
     multipass set local.${vm_name}.disk=${vm_size}
+    multipass set local.$vm_name.cpus=$cpus
+    multipass set local.$vm_name.memory=$memory
     multipass start ${vm_name}
     Write-Host "Launched VM"
 
