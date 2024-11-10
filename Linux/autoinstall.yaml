@@ -1,0 +1,10 @@
+autoinstall:
+  version: 1
+  identity:
+     hostname: auhydryomy
+     username: cryo 
+     password: $6$F/LxWd/QlsXSYbC3$Wx7tjN3THEtVHf55sGvsj.NBPsNmsEk0Yc5YGLR/MO8LDFaKYkliEbJ1j67RHIRVOjh6IWeQ1RtdYvNPl1dqF/
+  ssh:
+     install-server: yes
+     allow-pw: yes
+    
