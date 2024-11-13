@@ -38,6 +38,9 @@ NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Ho
 echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >>~/.profile
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
+logF "Installing Bun (Better JS Package manager)"
+curl -fsSL https://bun.sh/install | bash
+
 logF "Installing Node"
 brew install node@23
 
