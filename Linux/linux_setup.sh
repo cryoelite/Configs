@@ -40,6 +40,7 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 logF "Installing Bun (Better JS Package manager)"
 curl -fsSL https://bun.sh/install | bash
+source /home/cryo/.bashrc
 
 logF "Installing Node"
 brew install node@23
