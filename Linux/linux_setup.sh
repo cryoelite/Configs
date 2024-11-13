@@ -20,9 +20,13 @@ sudo apt-get full-upgrade -y
 sudo apt-get clean
 
 logF "Installing Packages"
-sudo apt-get install -y docker.io nano dirmngr gnupg software-properties-common curl gcc build-essential p7zip-full nano vim usbutils git \
+sudo apt-get install -y docker.io docker-compose nano dirmngr gnupg software-properties-common curl gcc build-essential p7zip-full nano vim usbutils git \
     python3 python3-venv \
-    clang clangd gdb llvm libreoffice bison
+    clang clangd gdb llvm libreoffice bison cifs-utils \
+    cmake g++ pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev
+    
+logF "Installing Vivaldi (Only on ubuntu)"
+sudo snap install vivaldi
 
 logF "Installing Rust"
 curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh #Rust https://doc.rust-lang.org/book/ch01-01-installation.html#installing-rustup-on-linux-or-macos
@@ -51,9 +55,12 @@ gvm install go1.23.3
 gvm use go1.23.3 --default
 go version
 
-logF "Setting up GIt"
-git config --global user.name "cryoelite"
-git config --global user.email "itscryonim@gmail.com"
+logF "Installing alacritty"
+cargo install alacritty
+
+logF "Set up Git (TODO, take name and email from user)"
+#git config --global user.name "cryoelite"
+#git config --global user.email "itscryonim@gmail.com"
 
 logF "Updating and Upgrading"
 sudo apt-get update -y
