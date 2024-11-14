@@ -9,9 +9,7 @@ logF() {    #log file
 }
 
 logF "Run with \$(bash linux_setup.sh) NOT sudo sh..."
-
-git_username="cryoelite"
-git_email="itscryonim@gmail.com"
+USER=$(whoami)
 
 logF "Updating and Upgrading"
 sudo apt-get update -y
@@ -29,6 +27,7 @@ logF "Installing docker compose v2"
 DOCKER_CONFIG=${DOCKER_CONFIG:-$HOME/.docker}
 mkdir -p $DOCKER_CONFIG/cli-plugins
 curl -SL https://github.com/docker/compose/releases/download/v2.30.3/docker-compose-linux-x86_64 -o $DOCKER_CONFIG/cli-plugins/docker-compose
+sudo usermod -aG docker $USER
 
 logF "Installing Vivaldi (Only on ubuntu)"
 sudo snap install vivaldi
@@ -78,7 +77,6 @@ git config --global user.name $name
 git config --global user.email $email
 
 logF "Enabling passwordless sudo for current user"
-USER=$(whoami)
 echo "$USER ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/$USER
 sudo chmod 0440 /etc/sudoers.d/$USER
 
