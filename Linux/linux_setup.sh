@@ -20,11 +20,16 @@ sudo apt-get full-upgrade -y
 sudo apt-get clean
 
 logF "Installing Packages"
-sudo apt-get install -y docker.io docker-compose nano dirmngr gnupg software-properties-common curl gcc build-essential p7zip-full nano vim usbutils git \
+sudo apt-get install -y docker.io nano dirmngr gnupg software-properties-common curl gcc build-essential p7zip-full nano vim usbutils git \
     python3 python3-venv \
     clang clangd gdb llvm libreoffice bison cifs-utils \
-    cmake g++ pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev
-    
+    cmake g++ pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev apt-transport-https ca-certificates
+
+logF "Installing docker compose v2"
+DOCKER_CONFIG=${DOCKER_CONFIG:-$HOME/.docker}
+mkdir -p $DOCKER_CONFIG/cli-plugins
+curl -SL https://github.com/docker/compose/releases/download/v2.30.3/docker-compose-linux-x86_64 -o $DOCKER_CONFIG/cli-plugins/docker-compose
+
 logF "Installing Vivaldi (Only on ubuntu)"
 sudo snap install vivaldi
 
@@ -62,12 +67,33 @@ go version
 logF "Installing alacritty"
 cargo install alacritty
 
-logF "Set up Git (TODO, take name and email from user)"
-#git config --global user.name "cryoelite"
-#git config --global user.email "itscryonim@gmail.com"
+logF "Set up Git"
+echo "Email ?"
+read email
+
+echo "Name ?"
+read name
+
+git config --global user.name $name
+git config --global user.email $email
+
+logF "Enabling passwordless sudo for current user"
+USER=$(whoami)
+echo "$USER ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/$USER
+sudo chmod 0440 /etc/sudoers.d/$USER
+
+logF "Enabling password based SSH"
+echo "PasswordAuthentication yes" | sudo tee -a /etc/ssh/sshd_config
+
+logF "Starting SSH and enabling autostart on boot"
+sudo systemctl enable ssh
+sudo systemctl start ssh
 
 logF "Updating and Upgrading"
 sudo apt-get update -y
 sudo apt-get upgrade -y
 sudo apt-get full-upgrade -y
 sudo apt-get clean
+
+logF "Current IP"
+ip addr
