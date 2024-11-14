@@ -10,6 +10,7 @@ logF() {    #log file
 
 logF "Run with \$(bash linux_setup.sh) NOT sudo sh..."
 USER=$(whoami)
+arch=$(uname -m)
 
 logF "Updating and Upgrading"
 sudo apt-get update -y
@@ -24,10 +25,9 @@ sudo apt-get install -y docker.io nano dirmngr gnupg software-properties-common 
     cmake g++ pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev apt-transport-https ca-certificates
 
 logF "Installing docker compose v2"
-DOCKER_CONFIG=${DOCKER_CONFIG:-$HOME/.docker}
-mkdir -p $DOCKER_CONFIG/cli-plugins
-curl -SL https://github.com/docker/compose/releases/download/v2.30.3/docker-compose-linux-x86_64 -o $DOCKER_CONFIG/cli-plugins/docker-compose
-sudo usermod -aG docker $USER
+sudo mkdir -p /usr/libexec/docker/cli-plugins
+sudo curl -SL https://github.com/docker/compose/releases/download/v2.30.3/docker-compose-linux-$arch -o /usr/libexec/docker/cli-plugins/docker-compose
+sudo chmod +x /usr/libexec/docker/cli-plugins/docker-compose
 
 logF "Installing Vivaldi (Only on ubuntu)"
 sudo snap install vivaldi
