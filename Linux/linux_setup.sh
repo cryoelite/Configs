@@ -54,8 +54,8 @@ curl -fsSL https://deno.land/install.sh | sh #deno https://docs.deno.com/runtime
 
 logF "Installing Go"
 bash -c "curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer | bash"
-chmod +r "/home/auhydromy/.gvm/scripts/gvm"
-. /home/auhydromy/.gvm/scripts/gvm
+chmod +r "/home/$USER/.gvm/scripts/gvm"
+. /home/$USER/.gvm/scripts/gvm
 gvm install go1.20.6 -B
 gvm use go1.20.6
 export GOROOT_BOOTSTRAP=$GOROOT
