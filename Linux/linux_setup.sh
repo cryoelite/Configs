@@ -24,6 +24,11 @@ sudo apt-get install -y docker.io nano dirmngr gnupg software-properties-common 
     clang clangd gdb llvm libreoffice bison cifs-utils \
     cmake g++ pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev apt-transport-https ca-certificates
 
+logF "Installing snapd (snap daemon for snap packages, very useful!)"
+#su root
+sudo apt update
+sudo apt install snapd
+
 logF "Installing docker compose v2"
 sudo groupadd docker
 sudo usermod -aG docker $USER
