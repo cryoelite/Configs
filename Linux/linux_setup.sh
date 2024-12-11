@@ -22,7 +22,7 @@ logF "Installing Packages"
 sudo apt-get install -y docker.io nano dirmngr gnupg software-properties-common curl gcc build-essential p7zip-full nano vim usbutils git \
     python3 python3-venv \
     clang clangd gdb llvm libreoffice bison cifs-utils \
-    cmake g++ pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev apt-transport-https ca-certificates
+    cmake g++ pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev apt-transport-https ca-certificates xterm
 
 logF "Installing snapd (snap daemon for snap packages, very useful!)"
 #su root
