@@ -19,10 +19,10 @@ sudo apt-get full-upgrade -y
 sudo apt-get clean
 
 logF "Installing Packages"
-sudo apt-get install -y docker.io nano dirmngr gnupg software-properties-common curl gcc build-essential p7zip-full nano vim usbutils git \
+sudo apt-get install -y docker.io nano dirmngr gnupg software-properties-common curl gcc build-essential p7zip-full nano vim git \
     python3 python3-venv \
     clang clangd gdb llvm libreoffice bison cifs-utils \
-    cmake g++ pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev apt-transport-https ca-certificates xterm
+    cmake g++ pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev apt-transport-https ca-certificates xterm libssl-dev
 
 logF "Installing snapd (snap daemon for snap packages, very useful!)"
 #su root
@@ -38,52 +38,6 @@ curl -SL https://github.com/docker/compose/releases/download/v2.30.3/docker-comp
 chmod +x $DOCKER_CONFIG/cli-plugins/docker-compose
 sudo systemctl restart docker
 
-logF "Installing Vivaldi (Only on ubuntu)"
-sudo snap install vivaldi
-
-logF "Installing Rust"
-curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh #Rust https://doc.rust-lang.org/book/ch01-01-installation.html#installing-rustup-on-linux-or-macos
-chmod +r "$HOME/.cargo/env"
-. "$HOME/.cargo/env"
-
-logF "Installing Brew"
-NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" #Brew https://brew.sh/
-echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >>~/.profile
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-
-logF "Installing Bun (Better JS Package manager)"
-curl -fsSL https://bun.sh/install | bash
-source /home/cryo/.bashrc
-
-logF "Installing Node"
-brew install node@23
-
-logF "Installing deno"
-curl -fsSL https://deno.land/install.sh | sh #deno https://docs.deno.com/runtime/getting_started/installation/
-
-logF "Installing Go"
-bash -c "curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer | bash"
-chmod +r "/home/$USER/.gvm/scripts/gvm"
-. /home/$USER/.gvm/scripts/gvm
-gvm install go1.20.6 -B
-gvm use go1.20.6
-export GOROOT_BOOTSTRAP=$GOROOT
-gvm install go1.23.3
-gvm use go1.23.3 --default
-go version
-
-logF "Installing alacritty"
-cargo install alacritty
-
-logF "Set up Git"
-echo "Email ?"
-read email
-
-echo "Name ?"
-read name
-
-git config --global user.name $name
-git config --global user.email $email
 
 logF "Enabling passwordless sudo for current user"
 echo "$USER ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/$USER
@@ -100,6 +54,7 @@ logF "Updating and Upgrading"
 sudo apt-get update -y
 sudo apt-get upgrade -y
 sudo apt-get full-upgrade -y
+sudo apt-get autoremove -y
 sudo apt-get clean
 
 logF "Current IP"
