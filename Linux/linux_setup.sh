@@ -33,13 +33,9 @@ curl -SL https://github.com/docker/compose/releases/download/v2.30.3/docker-comp
 chmod +x $DOCKER_CONFIG/cli-plugins/docker-compose
 sudo systemctl restart docker
 
-
 logF "Enabling passwordless sudo for current user"
 echo "$USER ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/$USER
 sudo chmod 0440 /etc/sudoers.d/$USER
-
-logF "Enabling password based SSH"
-echo "PasswordAuthentication yes" | sudo tee -a /etc/ssh/sshd_config
 
 logF "Starting SSH and enabling autostart on boot"
 sudo systemctl enable ssh
