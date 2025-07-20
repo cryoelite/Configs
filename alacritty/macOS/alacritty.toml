@@ -1,8 +1,3 @@
-# Alacritty Config
-
-import = [
-    "~/.config/alacritty/catppuccin-frappe.toml",
-]
 [env]
 TERM = "xterm-256color"
 
@@ -11,8 +6,18 @@ title = "Cryo's Alacrittew"
 dynamic_title = false
 
 [font]
-normal.family = "CodeNewRoman Nerd font"
+normal.family = "Cousine Nerd font"
 size = 15
 
 [selection]
 save_to_clipboard = true
+
+[general]
+# Alacritty Config
+
+import = [
+    "~/.config/alacritty/themes/themes/everforest_dark.toml",
+]
+
+[terminal]
+shell = { program = "/opt/homebrew/bin/nu" }
