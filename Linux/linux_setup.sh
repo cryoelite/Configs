@@ -25,7 +25,7 @@ sudo apt-get install -y docker.io nano dirmngr gnupg software-properties-common 
     cmake g++ pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev apt-transport-https ca-certificates xterm libssl-dev snapd
 
 logF "Installing docker compose v2"
-sudo groupadd docker
+sudo groupadd docker 2>/dev/null
 sudo usermod -aG docker $USER
 DOCKER_CONFIG=${DOCKER_CONFIG:-$HOME/.docker}
 mkdir -p $DOCKER_CONFIG/cli-plugins
